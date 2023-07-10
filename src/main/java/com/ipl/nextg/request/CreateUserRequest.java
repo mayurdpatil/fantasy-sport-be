@@ -1,14 +1,12 @@
 package com.ipl.nextg.request;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import javax.persistence.Column;
 import java.util.Date;
 
 public class CreateUserRequest {
 
     private String usr_fname;
     private String usr_lname;
+    private String email;
     private String usr_password;
     private String usr_profile;
     private Integer usr_type;
@@ -88,17 +86,26 @@ public class CreateUserRequest {
         return this;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "CreateUserRequest{" +
-                "usr_fname='" + usr_fname + '\'' +
-                ", usr_lname='" + usr_lname + '\'' +
-                ", usr_password='" + usr_password + '\'' +
-                ", usr_profile='" + usr_profile + '\'' +
-                ", usr_type=" + usr_type +
-                ", usr_gender='" + usr_gender + '\'' +
-                ", usr_status=" + usr_status +
-                ", usr_rating=" + usr_rating +
-                '}';
+            "usr_fname='" + usr_fname + '\'' +
+            ", usr_lname='" + usr_lname + '\'' +
+            ", email='" + email + '\'' +
+            ", usr_password='" + usr_password + '\'' +
+            ", usr_profile='" + usr_profile + '\'' +
+            ", usr_type=" + usr_type +
+            ", usr_gender='" + usr_gender + '\'' +
+            ", usr_status=" + usr_status +
+            ", usr_rating=" + usr_rating +
+            '}';
     }
 }
