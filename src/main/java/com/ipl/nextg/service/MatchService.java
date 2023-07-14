@@ -3,6 +3,8 @@ package com.ipl.nextg.service;
 import com.ipl.nextg.dao.MatchDAO;
 import com.ipl.nextg.dto.AllMatch;
 import com.ipl.nextg.dto.CurrentMatch;
+import com.ipl.nextg.dto.LeagueTeam;
+import com.ipl.nextg.request.ScheduleMatchRequest;
 import com.ipl.nextg.request.SubmitScoreRequest;
 import com.ipl.nextg.util.Helper;
 import java.util.HashMap;
@@ -54,5 +56,18 @@ public class MatchService {
 
   public boolean checkMatchStatus(Integer matchId) {
     return (matchDAO.checkMatchStatus(matchId).equals("P") ) ? true : false;
+  }
+
+  public List<LeagueTeam> retrieveLeagueTeams(Integer leagueId) {
+    return matchDAO.retrieveLeagueTeams(leagueId);
+  }
+
+  public List<String> retrieveMatchLocations()
+  {
+    return matchDAO.retrieveMatchLocations();
+  }
+
+  public Boolean scheduleMatch(ScheduleMatchRequest match) {
+    return matchDAO.scheduleMatch(match);
   }
 }

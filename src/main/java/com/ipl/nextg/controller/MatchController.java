@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -47,21 +46,5 @@ public class MatchController {
       }
       else
         return ResponseHandler.generateResponse("Submission time expired", HttpStatus.BAD_REQUEST, null);
-  }
-
-
-  @GetMapping("admin/getMatches")
-  public ResponseEntity<Object> getAllMatches(@RequestHeader("session-token") String sessionToken)
-  {
-    return ResponseHandler.generateResponse("All matches fetched successfully", HttpStatus.OK, matchService.retrieveAllMatches());
-  }
-
-  @PostMapping("admin/setResult")
-  public ResponseEntity<Object> saveMatchResult(@RequestHeader("session-token") String sessionToken, @RequestParam("matchId") Integer matchId, @RequestParam("teamId") Integer teamId, @RequestParam("matchScore") Integer matchScore)
-  {
-    if(matchService.checkMatchStatus(matchId))
-      return ResponseHandler.generateResponse("Winning team updated successfully", HttpStatus.OK, matchService.updateWinningTeam(matchId, teamId, matchScore));
-    else
-      return ResponseHandler.generateResponse("Winning team already updated for this match", HttpStatus.BAD_REQUEST, null);
   }
 }
