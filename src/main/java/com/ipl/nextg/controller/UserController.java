@@ -32,7 +32,6 @@ public class UserController {
     {
         Optional<User> userData = userService.checkUserCredentials(user);
         if(userData.isPresent()) {
-            //Create session Token
             return ResponseHandler.generateResponse("Login successful", HttpStatus.OK, userService.setUserSession(userData));
         }
         else

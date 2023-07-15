@@ -1,5 +1,8 @@
 package com.ipl.nextg.util;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+
 public class Helper {
 
   public static String convertStringToMD5(String md5) {
@@ -14,5 +17,10 @@ public class Helper {
     } catch (java.security.NoSuchAlgorithmException e) {
     }
     return null;
+  }
+
+  public static Long getPendingSeconds(LocalDateTime startLocaDateTime)
+  {
+    return (startLocaDateTime.toEpochSecond(ZoneOffset.of("Z")) - LocalDateTime.now().toEpochSecond(ZoneOffset.of("Z")) );
   }
 }
